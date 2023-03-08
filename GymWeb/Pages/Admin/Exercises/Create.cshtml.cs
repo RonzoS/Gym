@@ -42,7 +42,7 @@ namespace GymWeb.Pages.Exercises
             var files = HttpContext.Request.Form.Files;
             string fileName_new = Guid.NewGuid().ToString();
             var uploads = Path.Combine(webRootPath, @"images\Exercises");
-            var extension = Path.GetExtension(files[0].Name);
+            var extension = Path.GetExtension(files[0].FileName);
             using (var fileStream = new FileStream(Path.Combine(uploads, fileName_new+extension), FileMode.Create))
             {
                 files[0].CopyTo(fileStream);

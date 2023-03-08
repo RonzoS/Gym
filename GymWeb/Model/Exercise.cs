@@ -12,7 +12,9 @@ namespace GymWeb.Model
         public string Description { get; set; }
         public string Clues { get; set; }
         public string Image { get; set; }
+        [Display(Name = "Tools")]
         public ICollection<ExerciseTool> ExerciseTools { get; set; }
+        [Display(Name = "Muscles")]
         public ICollection<ExerciseMuscle> ExerciseMuscles { get; set; }
         public ICollection<Repeat> Repeats{ get; set; }
 

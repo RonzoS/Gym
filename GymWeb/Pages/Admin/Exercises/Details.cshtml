@@ -1,0 +1,41 @@
+﻿@page
+@model GymWeb.Pages.Admin.Exercises.DetailsModel
+
+<div class="border p-3 mt-4">
+		<div class="row pb-2">
+			<div class="col-9">
+			<h2 class="text-primary pl-3">Exercise: @Model.Exercise.Name</h2>
+			<hr />
+		
+
+		<div class="mb-3">
+			<h3 class="text-primary pl-3"><label asp-for="Exercise.Description"></label> <br /></h3>
+			@Html.Raw(@Model.Exercise.Description)
+		</div>
+		<div class="mb-3">
+			<h3 class="text-primary pl-3"<label asp-for="Exercise.Clues"></label> <br /></h3>
+			@Html.Raw(@Model.Exercise.Clues)
+		</div>
+		<div class="mb-3">
+			<h3 class="text-primary pl-3"<label asp-for="Exercise.ExerciseMuscles"></label> <br /></h3>
+			@foreach(var obj in Model.Muscles){
+				@obj.Name
+				<br></br>
+			}
+		</div>
+		<div class="mb-3">
+			<h3 class="text-primary pl-3"<label asp-for="Exercise.ExerciseTools"></label> <br /></h3>
+			@foreach(var obj in Model.Tools){
+				@obj.Name
+				<br></br>
+			}
+		</div>
+		</div>
+		<div class="col-3">
+			<img src="@Model.Exercise.Image" width="100%" style="border-radius:5px; border:1px solid #bbb9b9"/>
+		</div>
+		</div>
+		<a asp-page="Index" class="btn btn-primary" style="width:200px;"> Back to List </a>
+	</div>
+
+</div>

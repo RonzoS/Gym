@@ -34,6 +34,16 @@ namespace GymWeb.Repository
 
         }
 
+        public ICollection<Muscle> GetMuscleByExercise(int exerciseId)
+        {
+            return _db.ExerciseMuscle.Where(e => e.Exercise.Id == exerciseId).Select(m => m.Muscle).ToList();
+        }
+
+        public ICollection<Tool> GetToolByExercise(int exerciseId)
+        {
+            return _db.ExerciseTool.Where(e => e.Exercise.Id == exerciseId).Select(m => m.Tool).ToList();
+        }
+
         public void Update(Exercise exercise)
         {
             var objFromDb = _db.Exercise.FirstOrDefault(u => u.Id == exercise.Id);

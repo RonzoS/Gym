@@ -3,10 +3,9 @@ using GymWeb.Model;
 using GymWeb.Repository.IRepository;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
 
 
-namespace GymWeb.Pages.Exercises
+namespace GymWeb.Pages.Admin.Exercises
 {
     [BindProperties]
     public class EditModel : PageModel
@@ -46,13 +45,12 @@ namespace GymWeb.Pages.Exercises
                 {
                     files[0].CopyTo(fileStream);
                 }
-                Exercise.Image = @"\images\menuItems\" + fileName_new + extension;
+                Exercise.Image = @"\images\Exercises\" + fileName_new + extension;
             }
             else
             {
                 Exercise.Image = objFromDb.Image;
             }
-            Exercise.Image = Exercise.Image;
             _unitOfWork.Exercise.Update(Exercise);
             _unitOfWork.Save();
             return RedirectToPage("Index");

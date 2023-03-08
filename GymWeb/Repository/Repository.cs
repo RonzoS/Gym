@@ -19,9 +19,17 @@ namespace GymWeb.Repository
             dbSet.Add(entity);
         }
 
-        public IEnumerable<T> GetAll()
+        public IEnumerable<T> GetAll(string? includeProperties = null)
         {
             IQueryable<T> query = dbSet;
+            if(includeProperties != null)
+            {
+                foreach (var includePropery in includeProperties.Split(
+                    new char[] {','}, StringSplitOptions.RemoveEmptyEntries)) 
+                { 
+                    query = query.Include(includePropery);
+                }
+            }
             return query.ToList();
         }
 

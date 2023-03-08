@@ -15,21 +15,12 @@ namespace GymWeb.Pages.Muscles
         {
             _unitOfWork = unitOfWork;
         }
-        public void OnGet(int id)
+        public IActionResult OnGet(int id)
         {
-            Muscle = _unitOfWork.Muscle.GetFirstOfDefault(u=>u.Id==id);
-        }
-
-        public async Task<IActionResult> OnPost()
-        {
-            var muscleFromDb = _unitOfWork.Muscle.GetFirstOfDefault(u=>u.Id==Muscle.Id);
-            if (muscleFromDb != null)
-            {
-                _unitOfWork.Muscle.Remove(muscleFromDb);
-                _unitOfWork.Save();
-                return RedirectToPage("Index");
-            }
-            return Page();
+            var objFromDb = _unitOfWork.Muscle.GetFirstOfDefault(u=>u.Id==id);
+            _unitOfWork.Muscle.Remove(objFromDb);
+            _unitOfWork.Save();
+            return RedirectToPage("Index");
         }
     }
 }

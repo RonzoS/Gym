@@ -15,21 +15,13 @@ namespace GymWeb.Pages.Tools
         {
             _unitOfWork = unitOfWork;
         }
-        public void OnGet(int id)
+        public IActionResult OnGet(int id)
         {
-            Tool = _unitOfWork.Tool.GetFirstOfDefault(u => u.Id == id);
+            var objFromDb = _unitOfWork.Tool.GetFirstOfDefault(u => u.Id == id);
+            _unitOfWork.Tool.Remove(objFromDb);
+            _unitOfWork.Save();
+            return RedirectToPage("Index");
         }
 
-        public async Task<IActionResult> OnPost()
-        {
-            var toolFromDb = _unitOfWork.Tool.GetFirstOfDefault(u => u.Id == Tool.Id);
-            if (toolFromDb != null)
-            {
-                _unitOfWork.Tool.Remove(toolFromDb);
-                _unitOfWork.Save();
-                return RedirectToPage("Index");
-            }
-            return Page();
-        }
     }
 }

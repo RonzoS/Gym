@@ -1,13 +1,15 @@
 ﻿@page
-@model GymWeb.Pages.Exercises.EditModel
+@model GymWeb.Pages.Admin.Exercises.EditModel
 
 <form method="post" enctype="multipart/form-data">
 	<input hidden asp-for="Exercise.Id" />
 	<div class="border p-3 mt-4">
 		<div class="row pb-2">
-			<h2 class="text-primary pl-3">Edit Exercice</h2>
+			<div class="col-9">
+			<h2 class="text-primary pl-3">Edit Exercise</h2>
 			<hr />
-		</div>
+		
+
 		<div class="mb-3">
 			<label asp-for="Exercise.Name"></label>
 			<input asp-for="Exercise.Name" class="form-control" />
@@ -23,6 +25,11 @@
 		<div class="mb-3">
 			<label asp-for="Exercise.Image"></label>
 			<input type="file" name="files" id="uploadBox" class="form-control" />
+		</div>
+		</div>
+		<div class="col-3">
+			<img src="@Model.Exercise.Image" width="100%" style="border-radius:5px; border:1px solid #bbb9b9"/>
+		</div>
 		</div>
 		<button type="submit" class="btn btn-primary" style="width:150px;">Edit</button>
 		<a asp-page="Index" class="btn btn-primary" style="width:200px;"> Back to List </a>

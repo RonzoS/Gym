@@ -21,16 +21,13 @@
 				<th>
 					Exersice Name
 				</th>
-				<th>
-					Exersice Description
-				</th>
+				<th></th>
 			</tr>
 		</thead>
 		@foreach(var obj in Model.Exercises)
 			{
 			<tr>
-				<td width="20%">@obj.Name</td>
-				<td width="60%">@obj.Description</td>
+				<td width="75%">@obj.Name</td>
 				<td>
 					<div class="w-75 btn-group" role="group">
 					<a asp-page="Details" asp-route-id="@obj.Id" class="btn btn-info mx-2">
@@ -48,3 +45,7 @@
 			}
 	</table>
 </div>
+
+@section Scripts{
+	<script src="~/js/table.js"></script>
+}

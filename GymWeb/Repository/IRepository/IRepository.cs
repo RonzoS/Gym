@@ -8,6 +8,6 @@ namespace GymWeb.Repository.IRepository
         void Add(T entity);
         void Remove(T entity);
         T GetFirstOfDefault(Expression<Func<T,bool>>? filter=null);
-        IEnumerable<T> GetAll();
+        IEnumerable<T> GetAll(string? includeProperties=null);
     }
 }
