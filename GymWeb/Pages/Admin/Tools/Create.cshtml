@@ -1,0 +1,17 @@
+﻿@page
+@model GymWeb.Pages.Tools.CreateModel
+
+<form method="post">
+	<div class="border p-3 mt-4">
+		<div class="row pb-2">
+			<h2 class="text-primary pl-3">Create Tools</h2>
+			<hr />
+		</div>
+		<div class="mb-3">
+			<label asp-for="Tool.Name"></label>
+			<input asp-for="Tool.Name" class="form-control" />
+		</div>
+		<button type="submit" class="btn btn-primary" style="width:150px;">Create</button>
+		<a asp-page="Index" class="btn btn-primary" style="width:200px;"> Back to List </a>
+	</div>
+</form>

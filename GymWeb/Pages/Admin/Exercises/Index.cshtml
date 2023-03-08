@@ -1,0 +1,50 @@
+﻿@page
+@model GymWeb.Pages.Exercises.IndexModel
+
+<div class="containter p-3">
+	<div class="row pt-4">
+		<div class="col-6">
+			<h2 class="text-primary">Exercise List</h2>
+		</div>
+		<div class="col-6 text-end">
+			<a asp-page="create" class="btn btn-primary">
+				Create New Exercise
+			</a>
+		</div>
+	</div>
+
+	<br /><br />
+
+	<table id="DT_load" class="table table-bordered table-striped" style="width:100%">
+		<thead>
+			<tr>
+				<th>
+					Exersice Name
+				</th>
+				<th>
+					Exersice Description
+				</th>
+			</tr>
+		</thead>
+		@foreach(var obj in Model.Exercises)
+			{
+			<tr>
+				<td width="20%">@obj.Name</td>
+				<td width="60%">@obj.Description</td>
+				<td>
+					<div class="w-75 btn-group" role="group">
+					<a asp-page="Details" asp-route-id="@obj.Id" class="btn btn-info mx-2">
+						<i class="bi bi-eye"></i>
+					</a>
+					<a asp-page="Edit" asp-route-id="@obj.Id" class="btn btn-primary mx-2">
+						<i class="bi bi-pencil-square"></i>
+					</a>
+					<a asp-page="Delete" asp-route-id="@obj.Id" class="btn btn-danger mx-2">
+						<i class="bi bi-trash"></i>
+					</a>
+					</div>
+				</td>
+			</tr>
+			}
+	</table>
+</div>

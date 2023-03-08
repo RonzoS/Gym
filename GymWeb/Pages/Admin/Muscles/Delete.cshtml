@@ -1,0 +1,18 @@
+﻿@page
+@model GymWeb.Pages.Muscles.DeleteModel
+
+<form method="post">
+	<input hidden asp-for="Muscle.Id" />
+	<div class="border p-3 mt-4">
+		<div class="row pb-2">
+			<h2 class="text-primary pl-3">Delete Muscle</h2>
+			<hr />
+		</div>
+		<div class="mb-3">
+			<label asp-for="Muscle.Name"></label>
+			<input asp-for="Muscle.Name" disabled class="form-control" />
+		</div>
+		<button type="submit" class="btn btn-danger" style="width:150px;">Delete</button>
+		<a asp-page="Index" class="btn btn-primary" style="width:200px;"> Back to List </a>
+	</div>
+</form>

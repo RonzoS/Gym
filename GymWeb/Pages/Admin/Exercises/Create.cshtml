@@ -1,0 +1,51 @@
+﻿@page
+@model GymWeb.Pages.Exercises.CreateModel
+
+<form method="post" enctype="multipart/form-data">
+	<div class="border p-3 mt-4">
+		<div class="row pb-2">
+			<h2 class="text-primary pl-3">Create Exercice</h2>
+			<hr />
+		</div>
+		<div class="mb-3">
+			<label asp-for="Exercise.Name"></label>
+			<input asp-for="Exercise.Name" class="form-control" />
+		</div>
+		<div class="mb-3">
+			<label asp-for="Exercise.Description"></label>
+			<textarea asp-for="Exercise.Description" class="form-control" ></textarea>
+		</div>
+		<div class="mb-3">
+			<label asp-for="Exercise.Clues"></label>
+			<textarea asp-for="Exercise.Clues" class="form-control" ></textarea>
+		</div>
+		<div class="mb-3">
+			<label asp-for="Exercise.Image"></label>
+			<input type="file" name="files" id="uploadBox" class="form-control" />
+		</div>
+		<div class="mb-3">
+			<label asp-for="Exercise.ExerciseMuscles"></label>
+			<select asp-for="muscleId" asp-items="Model.MusclesList"  class="form-select">
+				<option disabled selected>Select Muscle</option>
+			</select>
+		</div>
+		<div class="mb-3">
+			<label asp-for="Exercise.ExerciseTools"></label>
+			<select asp-for="toolId" asp-items="Model.ToolsList"  class="form-select">
+				<option disabled selected>Select Tool</option>
+			</select>
+		</div>
+		<button type="submit" class="btn btn-primary" style="width:150px;">Create</button>
+		<a asp-page="Index" class="btn btn-primary" style="width:200px;"> Back to List </a>
+	</div>
+</form>
+
+@section Scripts{
+	<script>
+    tinymce.init({
+      selector: 'textarea',
+      plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
+      toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+    });
+  </script>
+}
